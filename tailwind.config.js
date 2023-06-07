@@ -21,6 +21,7 @@ module.exports = {
       animation: {
         'spin-left': 'spin-left 8s linear infinite',
         'spin-right': 'spin-right 7s linear infinite',
+        bounce: 'spin-right 1.5s cubic-bezier(.24,1.61,.27,.84) infinite'
       },
       keyframes: {
         'spin-left': {
@@ -30,8 +31,7 @@ module.exports = {
         'spin-right': {
           'from': { transform: 'rotate(0deg)' },
           'to': { transform: 'rotate(360deg)' }
-        }
-        
+        }        
       }
     },
   },

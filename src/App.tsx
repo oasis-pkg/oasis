@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes } from '@solidjs/router';
+import { Navigate, Outlet, Route, Routes } from '@solidjs/router';
 import type { Component } from 'solid-js';
 import Home from './pages/Home';
 import Search from './pages/Search';
@@ -32,7 +32,10 @@ const App: Component = () => {
 			<Routes>
 				<Route path='/' component={Home} />
 				<Route path='*' component={Global}>
-					<Route path='/search' component={Search} />
+					<Route path='/search'>
+						<Route path='/' component={Search} />
+						<Route path='/:data' component={Search} />
+					</Route>
 					<Route path='*' component={Test3} /> {/* FIXME add better 404 */}
 				</Route>
 			</Routes>

@@ -5,21 +5,24 @@ import Search from '../assets/Search';
 import Chevron from '../assets/Chevron';
 import { SiArchlinux } from 'solid-icons/si';
 import { useI18n, useScopedI18n } from '@solid-primitives/i18n';
-import dict, { lang } from '../lang';
+import dict from '../lang';
 import store from '../store';
 import getRandomGradient from '../utils/gradient';
+import fetch from '../workers/fetch';
+import { useNavigate } from '@solidjs/router';
 
 /*
-from-blue-500 to-purple-600
-from-sky-400 to-indigo-500
-from-orange-400 to-yellow-500
-from-fuchsia-500 to-rose-500
-from-green-400 to-teal-600
+
+FIXME
+
+- Content doesn't fit on small screens
 
 */
 
 const Home: Component<{}> = props => {
 	const [t] = useI18n<(typeof dict)['en-US']>();
+
+	let navigate = useNavigate();
 
 	let learn;
 
@@ -43,6 +46,12 @@ const Home: Component<{}> = props => {
 						class='bg-slate-100 w-1/3 px-4 py-2 outline-none placeholder-slate-400'
 						placeholder={t('main.search')}
 						type='text'
+						onInput={e => store.set('query', e.target.value)}
+						onkeypress={async e => {
+							if (e.key == 'Enter' && store.get.query) {
+								navigate(`/search?q=${store.get.query}`);
+							}
+						}}
 					/>
 					<div class='px-4 py-2 bg-slate-700 hover:cursor-pointer'>
 						<Search class='fill-slate-100 w-6 h-6' />
@@ -50,7 +59,8 @@ const Home: Component<{}> = props => {
 				</div>
 				<div
 					onClick={() => learn.scrollIntoView({ behavior: 'smooth' })}
-					class='flex flex-col h-full justify-end items-center hover:cursor-pointer'>
+					class='flex flex-col h-full justify-end items-center hover:cursor-pointer'
+				>
 					<p class='font-medium text-slate-100 text-xl'>{t('main.learn_more')}</p>
 					<Chevron class='fill-slate-100 w-14 h-14' />
 				</div>

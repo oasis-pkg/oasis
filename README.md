@@ -7,6 +7,19 @@ In addition, I'm working on another project, so this could not have any update f
 
 ## Roadmap
 
+### App features
+
+-   [ ] Search
+-   [ ] Details
+-   [ ] Commands
+-   [ ] Sorting
+-   [ ] Filtering
+-   [ ] Dependencies links
+-   [ ] License overview
+-   [ ] Useless but epic animations
+
+### Package support
+
 -   [ ] Linux packages
     -   [ ] Arch/AUR
     -   [ ] Ubuntu

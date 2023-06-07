@@ -1,11 +1,4 @@
-export type lang = {
-	app: string;
-	slogan: string;
-	main: {
-		search: string;
-		learn_more: string;
-	};
-};
+import { lang } from '../types';
 
 const en: lang = {
 	app: 'Oasis',
@@ -14,14 +7,20 @@ const en: lang = {
 		search: 'Search a package...',
 		learn_more: 'Learn more',
 	},
+	header: {
+		placeholder: 'Search a package...',
+	},
 };
 
 const es: lang = {
 	app: 'Oasis',
 	slogan: 'Todos los paquetes, un solo lugar.',
 	main: {
-		search: 'Search a package...',
-		learn_more: 'Learn more',
+		search: 'Busca un paquete...',
+		learn_more: 'Saber más',
+	},
+	header: {
+		placeholder: 'Busca un paquete...',
 	},
 };
 
