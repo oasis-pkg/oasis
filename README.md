@@ -21,7 +21,7 @@ In addition, I'm working on another project, so this could not have any update f
 ### Package support
 
 -   [ ] Linux packages
-    -   [ ] Arch/AUR
+    -   [ ] ~~Arch/AUR~~\*
     -   [ ] Ubuntu
     -   [ ] Fedora
     -   [ ] Flathub
@@ -33,7 +33,11 @@ In addition, I'm working on another project, so this could not have any update f
     -   [ ] MacPorts
 -   [ ] Cargo crates
 -   [ ] NPM modules
+-   [ ] Deno modules
 -   [ ] Hex.pm packages
+-   [ ] PyPI packages
 -   [ ] More things...
+
+\* _Not available due to CORS policy_
 
 _Gátomo - GNU General Public License v.3.0 License_

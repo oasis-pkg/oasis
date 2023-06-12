@@ -1,4 +1,10 @@
-import axios from 'axios';
+/*
+ ******************************************
+ *** NOTE: Unable to use it due to CORS ***
+ ******************************************
+ */
+
+/* import axios from 'axios';
 import { pkg, worker } from '../types';
 import config from '../config';
 import urlparser from '../utils/urlparser';
@@ -12,20 +18,15 @@ import urlparser from '../utils/urlparser';
 								.replaceAll('{{pkg}}', q.pkg)}`
 						)
 						.catch(err => console.error(err));
-*/
+*
 export default {
 	platform: 'arch',
 	query: async q => {
 		let uri = config.endpoints.filter(e => e.platform == 'arch')[0];
 
-		// FIXME CORS
 		let data =
 			(await axios
-				.get(`${uri.base}${uri.endpoints.query.replaceAll('{{pkg}}', q)}`, {
-					headers: {
-						'Cross-Origin-Opener-Policy': 'same-origin',
-					},
-				})
+				.get(`${uri.base}${uri.endpoints.query.replaceAll('{{pkg}}', q)}`, {})
 				.catch(err => console.error(err))) || [];
 
 		let arr: pkg[] = [];
@@ -47,4 +48,4 @@ export default {
 
 		return arr;
 	},
-} as worker;
+} as worker; */

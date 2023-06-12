@@ -1,14 +1,19 @@
 import store from '../store';
-import { platform } from '../types';
-import arch from './arch';
+import { pkg, platform } from '../types';
+// import arch from './arch';
+import crates from './crates';
 
-export default async (query: string, platform: platform[]) => {
-	let workers = [arch];
+export default async (q: string, platform: platform[]) => {
+	let workers = [crates];
+
+	let pkgs: pkg[] = [];
 
 	// TODO add platform filtering
 	for (const i of workers) {
-		let packages = (await i.query(query).catch(err => console.error(err))) || [];
+		let packages = (await i.query(q).catch(err => console.error(err))) || [];
 
-		store.set('packages', p => p.concat(packages));
+		pkgs.push(...packages);
 	}
+
+	return pkgs;
 };

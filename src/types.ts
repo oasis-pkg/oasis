@@ -1,4 +1,4 @@
-export type platform = 'arch' | 'aur';
+export type platform = 'arch' | 'aur' | 'crates';
 export type urltype = 'any' | 'github' | 'gitlab';
 export type url = { kind: urltype; url: string };
 
@@ -6,9 +6,10 @@ export type pkg = {
 	name: string;
 	description: string;
 	version: string;
-	licenses: [string];
+	licenses: string[];
 	platform: platform; // TODO add more platforms,
-	links?: [url];
+	link?: url;
+	repo?: url;
 	// TODO add basic data struct for each platform
 	arch?: {
 		arch: string;

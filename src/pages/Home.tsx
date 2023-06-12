@@ -8,7 +8,6 @@ import { useI18n, useScopedI18n } from '@solid-primitives/i18n';
 import dict from '../lang';
 import store from '../store';
 import getRandomGradient from '../utils/gradient';
-import fetch from '../workers/fetch';
 import { useNavigate } from '@solidjs/router';
 
 /*
@@ -59,8 +58,7 @@ const Home: Component<{}> = props => {
 				</div>
 				<div
 					onClick={() => learn.scrollIntoView({ behavior: 'smooth' })}
-					class='flex flex-col h-full justify-end items-center hover:cursor-pointer'
-				>
+					class='flex flex-col h-full justify-end items-center hover:cursor-pointer'>
 					<p class='font-medium text-slate-100 text-xl'>{t('main.learn_more')}</p>
 					<Chevron class='fill-slate-100 w-14 h-14' />
 				</div>

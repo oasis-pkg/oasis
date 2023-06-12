@@ -30,3 +30,18 @@ const dict = {
 };
 
 export default dict;
+
+let a = [
+	[
+		{ kind: 'github', url: 'https://github.com/tokio-rs/tokio' }, // del campo "repo"
+		{ kind: 'web', url: 'https://tokio.rs' }, // del campo "website"
+	],
+	[
+		{ kind: 'github', url: 'https://github.com/tokio-rs/console' }, // del campo "repo"
+		{ kind: 'github', url: 'https://github.com/tokio-rs/console/blob/main/tokio-console' }, // del campo "website"
+	],
+	[
+		{ kind: 'github', url: 'https://github.com/TritonDataCenter/tokio-zookeeper.git' }, // del campo "repo"
+		{ kind: 'github', url: 'https://github.com/TritonDataCenter/tokio-zookeeper' }, // del campo "website"
+	],
+];
