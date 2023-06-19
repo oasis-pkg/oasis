@@ -8,8 +8,9 @@ export type pkg = {
 	version: string;
 	licenses: string[];
 	platform: platform; // TODO add more platforms,
-	link?: url;
-	repo?: url;
+	homepage: string;
+	repo: string;
+	// links?: string[];
 	// TODO add basic data struct for each platform
 	arch?: {
 		arch: string;
@@ -24,17 +25,5 @@ there is no need to fetch a package for extra data
 export type worker = {
 	platform: platform;
 	query: (query: string) => Promise<pkg[]>;
-	// data: (query: { pkg: string; arch: { arch?: string; repo?: string } }) => Promise<pkg>;
-};
-
-export type lang = {
-	app: string;
-	slogan: string;
-	main: {
-		search: string;
-		learn_more: string;
-	};
-	header: {
-		placeholder: string;
-	};
+	data: (query: string /* { pkg: string; arch: { arch?: string; repo?: string } } */) => Promise<pkg>;
 };

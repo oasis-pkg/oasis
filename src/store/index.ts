@@ -2,8 +2,6 @@ import { createEffect, on } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import getRandomGradient from '../utils/gradient';
 import { pkg } from '../types';
-import { useNavigate } from '@solidjs/router';
-import fetch from '../workers/fetch';
 
 const [store, setStore] = createStore({
 	query: '',

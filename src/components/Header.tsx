@@ -5,17 +5,17 @@ import { useI18n } from '@solid-primitives/i18n';
 import dict from '../lang';
 import getRandomGradient from '../utils/gradient';
 import Search from '../assets/Search';
-import GitHub from '../assets/GitHub';
 import Settings from '../assets/Settings';
 import config from '../config';
 import { A, useNavigate } from '@solidjs/router';
+import { SiGithub } from 'solid-icons/si';
 
 const Header: Component = () => {
 	const [t] = useI18n<(typeof dict)['en-US']>();
 	let navigate = useNavigate();
 
 	return (
-		<div class='bg-slate-50 flex flex-col w-full sticky top-0'>
+		<div class='bg-slate-50 flex flex-col w-full sticky top-0 font-heebo'>
 			<div
 				class={`w-full h-3 ${store.get.gradient}`}
 				onClick={() => store.set('gradient', getRandomGradient())}></div>
@@ -48,7 +48,7 @@ const Header: Component = () => {
 				</div>
 				<div class='flex gap-x-4 items-center'>
 					<a href={config.repo} target='_blank'>
-						<GitHub class='w-7 h-7 fill-slate-600 hover:fill-slate-800 ease-in-out duration-200' />
+						<SiGithub class='w-7 h-7 fill-slate-600 hover:fill-slate-800 ease-in-out duration-200' />
 					</a>
 					<Settings
 						onClick={() => console.log(store.get.packages)}

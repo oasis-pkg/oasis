@@ -2,21 +2,25 @@
 
 Oasis is an unified package search engine to find any kind of packages in one place.
 
+## Development notice
+
 This is a new project and I'm working on it. I'll publish all changes, but it won't be available for production until I add the main features.
+
+Code is full of "FIXME" tags because code needs several refactors, optimizations and improvements.
+
 In addition, I'm working on another project, so this could not have any update for a few weeks.
 
 ## Roadmap
 
 ### App features
 
--   [ ] Search
--   [ ] Details
+-   [x] Search
+-   [x] Details
 -   [ ] Commands
 -   [ ] Sorting
 -   [ ] Filtering
 -   [ ] Dependencies links
 -   [ ] License overview
--   [ ] Useless but epic animations
 
 ### Package support
 
@@ -24,14 +28,14 @@ In addition, I'm working on another project, so this could not have any update f
     -   [ ] ~~Arch/AUR~~\*
     -   [ ] Ubuntu
     -   [ ] Fedora
-    -   [ ] Flathub
+    -   [ ] FlatHub
 -   [ ] Windows packages
     -   [ ] Scoop.sh
     -   [ ] Chocolatey
 -   [ ] Mac packages
     -   [ ] Homebrew
     -   [ ] MacPorts
--   [ ] Cargo crates
+-   [x] Cargo crates
 -   [ ] NPM modules
 -   [ ] Deno modules
 -   [ ] Hex.pm packages

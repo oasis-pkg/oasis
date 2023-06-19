@@ -26,7 +26,7 @@ const Home: Component<{}> = props => {
 	let learn;
 
 	return (
-		<div class='text-slate-900 relative'>
+		<div class='text-slate-900 relative font-heebo'>
 			<div class={`w-full h-screen flex flex-col items-center pt-24 pb-8 gap-y-24 ${store.get.gradient}`}>
 				<div class='flex flex-col gap-y-7 justify-center items-center p-4 text-slate-100'>
 					<div class='animate-spin-right'>

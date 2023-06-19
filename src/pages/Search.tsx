@@ -4,7 +4,7 @@ import { useI18n } from '@solid-primitives/i18n';
 import dict from '../lang';
 import store from '../store';
 import { useNavigate, useParams, useSearchParams } from '@solidjs/router';
-import fetch from '../workers/fetch';
+import { fetchAll } from '../workers/fetch';
 import Card from '../components/Search/Card';
 
 const Search: Component<{}> = props => {
@@ -17,18 +17,15 @@ const Search: Component<{}> = props => {
 		console.info({ ...params }.q);
 
 		if (!Object.hasOwn({ ...params }, 'q') || !{ ...params }.q) {
-			navigate('/');
+			navigate('/', {
+				replace: true,
+			});
 		}
 
-		/* 		store.set('packages', []);
-		store.set('query', { ...params }.q);
-		let packages = await fetch({ ...params }.q, []).catch(err => console.error(err));
-
-		store.set('packages', packages || []); */
-
+		// FIXME parallel queries
 		store.set('packages', []);
 		store.set('query', { ...params }.q);
-		let packages = await fetch({ ...params }.q, []).catch(err => console.error(err));
+		let packages = await fetchAll({ ...params }.q, []).catch(err => console.error(err));
 
 		store.set('packages', packages || []);
 	});

@@ -1,4 +1,23 @@
-import { lang } from '../types';
+export type lang = {
+	app: string;
+	slogan: string;
+	main: {
+		search: string;
+		learn_more: string;
+	};
+	header: {
+		placeholder: string;
+	};
+	data: {
+		homepage: string;
+		repo: string;
+		license: string;
+		crates: string;
+	};
+	glossary: {
+		or: string;
+	};
+};
 
 const en: lang = {
 	app: 'Oasis',
@@ -9,6 +28,15 @@ const en: lang = {
 	},
 	header: {
 		placeholder: 'Search a package...',
+	},
+	data: {
+		homepage: 'Homepage',
+		repo: 'Repository',
+		license: 'License',
+		crates: 'Add {{pkg}} to your project with Cargo command, or add it into Cargo.toml',
+	},
+	glossary: {
+		or: 'or',
 	},
 };
 
@@ -21,6 +49,15 @@ const es: lang = {
 	},
 	header: {
 		placeholder: 'Busca un paquete...',
+	},
+	data: {
+		homepage: 'Página de inicio',
+		repo: 'Repositorio',
+		license: 'Licencia',
+		crates: 'Importa {{pkg}} a tu proyecto con el comando Cargo, o añádelo en Cargo.toml',
+	},
+	glossary: {
+		or: 'o',
 	},
 };
 

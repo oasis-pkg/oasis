@@ -4,7 +4,7 @@
  ******************************************
  */
 
-/* import axios from 'axios';
+import axios from 'axios';
 import { pkg, worker } from '../types';
 import config from '../config';
 import urlparser from '../utils/urlparser';
@@ -18,7 +18,7 @@ import urlparser from '../utils/urlparser';
 								.replaceAll('{{pkg}}', q.pkg)}`
 						)
 						.catch(err => console.error(err));
-*
+*/
 export default {
 	platform: 'arch',
 	query: async q => {
@@ -36,7 +36,8 @@ export default {
 				platform: 'arch',
 				name: i.pkgname,
 				description: i.pkgdesc,
-				links: [{ kind: urlparser(i.url), url: i.url }],
+				homepage: i.url,
+				repo: '',
 				licenses: i.licenses,
 				version: i.pkgver,
 				arch: {
@@ -48,4 +49,4 @@ export default {
 
 		return arr;
 	},
-} as worker; */
+} as worker;
