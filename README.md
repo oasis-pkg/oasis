@@ -14,8 +14,9 @@ In addition, I'm working on another project, so this could not have any update f
 
 ### App features
 
--   [x] Search
--   [x] Details
+-   [x] Search (partial)
+-   [x] Details (partial)
+-   [x] Readme (partial)
 -   [ ] Commands
 -   [ ] Sorting
 -   [ ] Filtering

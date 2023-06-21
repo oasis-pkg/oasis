@@ -14,8 +14,6 @@ const Search: Component<{}> = props => {
 	const navigate = useNavigate();
 
 	createEffect(async () => {
-		console.info({ ...params }.q);
-
 		if (!Object.hasOwn({ ...params }, 'q') || !{ ...params }.q) {
 			navigate('/', {
 				replace: true,

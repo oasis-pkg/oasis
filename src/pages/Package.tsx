@@ -19,6 +19,7 @@ import store from '../store';
 import { useI18n } from '@solid-primitives/i18n';
 import dict from '../lang';
 import urlparser from '../utils/urlparser';
+import Copy from '../assets/Copy';
 
 const command = (platform: platform, pkg: string, ver: string): string[] => {
 	let cmds = [];
@@ -75,9 +76,9 @@ const Package: Component<{}> = props => {
 						<div class='flex gap-x-8 items-center'>
 							<PkgIcon class='w-14 h-14 fill-slate-800' platform={data().platform} />
 							<div class='flex flex-col gap-y-2'>
-								<div class='flex gap-x-3 items-center'>
+								<div class='flex gap-x-3 items-center '>
 									<p class='font-light text-4xl font-heebo select-all'>{data().name}</p>
-									<p class='text-slate-700 font-light font-heebo'>{data().version}</p>
+									<p class='text-slate-700 font-light font-heebo select-all'>{data().version}</p>
 								</div>
 								<p class='font-heebo'>{data().description}</p>
 							</div>
@@ -107,17 +108,19 @@ const Package: Component<{}> = props => {
 							<p class='mb-2'>{t('data.crates')}</p>
 							<For each={command(data().platform, data().name, data().version)}>
 								{i => (
-									<pre class='flex justify-between items-center ring-1 ring-slate-300 px-4 py-2 rounded-md'>
-										<code class='font-jetbrains select-all'>{i}</code>
-										<div
-											onClick={() => navigator.clipboard.writeText(i).catch(() => null)}
-											class='flex gap-x-4 items-center'>
-											<p class='font-heebo'>Copy</p>
-											<SiGithub class='w-4 h-4' />
+									<pre class='flex select-all justify-between items-center ring-1 ring-slate-300 rounded-md overflow-hidden'>
+										<code class='font-jetbrains  ml-4'>{i}</code>
+										<div class={`group relative ${store.get.gradient}`}>
+											<div
+												class='p-3 bg-slate-200 hover:bg-slate-300 active:bg-transparent ease-in-out duration-200'
+												onClick={() => navigator.clipboard.writeText(i).catch(() => null)}>
+												<Copy class='w-6 h-6 fill-slate-800 group-active:fill-slate-100 ease-in-out duration-200' />
+											</div>
 										</div>
 									</pre>
 								)}
 							</For>
+							<div innerHTML={data().readme}></div>
 						</Section>
 					</div>
 				</Match>

@@ -8,7 +8,7 @@ export default {
 		let uri = config.endpoints.filter(e => e.platform == 'crates')[0];
 
 		let data: any = await axios
-			.get(`${uri.base}${uri.endpoints.query.replaceAll('{{pkg}}', q)}`)
+			.get(`${uri.bases[0]}${uri.endpoints.query.replaceAll('{{pkg}}', q)}`)
 			.catch(err => console.error(err));
 
 		let arr: pkg[] = [];
@@ -30,7 +30,12 @@ export default {
 	data: async q => {
 		let uri = config.endpoints.filter(e => e.platform == 'crates')[0];
 
-		let { data } = await axios.get(`${uri.base}${uri.endpoints.data.replaceAll('{{pkg}}', q)}`);
+		let { data } = await axios.get(uri.bases[0] + uri.endpoints.data.replaceAll('{{pkg}}', q));
+
+		let readme = await axios.get(
+			uri.bases[1] +
+				uri.endpoints.readme.replaceAll('{{pkg}}', q).replaceAll('{{ver}}', data.crate.newest_version)
+		);
 
 		return {
 			platform: 'crates',
@@ -39,6 +44,7 @@ export default {
 			homepage: data.crate.homepage,
 			repo: data.crate.repository,
 			licenses: [data.versions[0].license],
+			readme: readme.data,
 			version: data.crate.newest_version,
 		};
 	},

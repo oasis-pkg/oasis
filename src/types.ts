@@ -10,6 +10,7 @@ export type pkg = {
 	platform: platform; // TODO add more platforms,
 	homepage: string;
 	repo: string;
+	readme?: string;
 	// links?: string[];
 	// TODO add basic data struct for each platform
 	arch?: {

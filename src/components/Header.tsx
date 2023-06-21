@@ -50,10 +50,7 @@ const Header: Component = () => {
 					<a href={config.repo} target='_blank'>
 						<SiGithub class='w-7 h-7 fill-slate-600 hover:fill-slate-800 ease-in-out duration-200' />
 					</a>
-					<Settings
-						onClick={() => console.log(store.get.packages)}
-						class='w-8 h-8 fill-slate-600 hover:fill-slate-800 ease-in-out duration-200'
-					/>
+					<Settings class='w-8 h-8 fill-slate-600 hover:fill-slate-800 ease-in-out duration-200' />
 				</div>
 			</div>
 		</div>

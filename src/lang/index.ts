@@ -16,6 +16,8 @@ export type lang = {
 	};
 	glossary: {
 		or: string;
+		copy: string;
+		copied: string;
 	};
 };
 
@@ -37,6 +39,8 @@ const en: lang = {
 	},
 	glossary: {
 		or: 'or',
+		copy: 'Copy',
+		copied: 'Copied',
 	},
 };
 
@@ -58,6 +62,8 @@ const es: lang = {
 	},
 	glossary: {
 		or: 'o',
+		copy: 'Copiar',
+		copied: 'Copiado',
 	},
 };
 
