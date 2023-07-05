@@ -8,29 +8,40 @@ const [store, setStore] = createStore({
 	lang: localStorage.getItem('lang') || navigator.language,
 	gradient: getRandomGradient(),
 	packages: [] as pkg[],
+	toast: {
+		type: '' as '' | 'ok' | 'sound',
+		text: '',
+	},
+	CFG_extendedReadme: localStorage.getItem('extended_readme') == '1',
+	CFG_dark: localStorage.getItem('dark') == '1',
 });
 
 createEffect(
 	on(
 		() => store.lang,
-		() => {
-			localStorage.setItem('lang', store.lang || navigator.language);
-		}
+		() => localStorage.setItem('lang', store.lang || navigator.language)
 	)
 );
 
-/* createEffect(
+createEffect(
 	on(
-		() => store.query,
-		async () => {
-			let pkgs = (await fetch(store.query, []).catch(err => console.error(err))) || []; // FIXME platform filter
+		() => store.CFG_extendedReadme,
+		() => localStorage.setItem('extended_readme', store.CFG_extendedReadme ? '1' : '0')
+	)
+);
 
-			setStore('packages', p => p.concat(pkgs));
+createEffect(
+	on(
+		() => store.CFG_dark,
+		() => {
+			localStorage.setItem('dark', store.CFG_dark ? '1' : '0');
 
-			console.info('me han llamado', pkgs);
+			let root = document.documentElement.classList;
+
+			store.CFG_dark ? root.add('dark') : root.remove('dark');
 		}
 	)
-); */
+);
 
 export default {
 	get: store,

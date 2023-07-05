@@ -25,6 +25,8 @@ there is no need to fetch a package for extra data
 */
 export type worker = {
 	platform: platform;
-	query: (query: string) => Promise<pkg[]>;
-	data: (query: string /* { pkg: string; arch: { arch?: string; repo?: string } } */) => Promise<pkg>;
+	query: (q: string) => Promise<[pkg[] | null, string | null]>;
+	data: (
+		q: string /* { pkg: string; arch: { arch?: string; repo?: string } } */
+	) => Promise<[pkg | null, string | null]>;
 };

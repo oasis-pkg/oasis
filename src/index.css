@@ -14,3 +14,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	.epic {
+		@apply cursor-pointer hover:rotate-[360deg] hover:scale-110 active:rotate-[-720deg] active:scale-90 ease-[cubic-bezier(.24,1.61,.27,.84)] duration-[1.5s];
+	}
+}

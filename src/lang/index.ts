@@ -11,9 +11,37 @@ export type lang = {
 	data: {
 		homepage: string;
 		repo: string;
+		install: string;
 		license: string;
+		meta: string;
+		readme: string;
 		crates: string;
+		readmeToggle: {
+			show: string;
+			hide: string;
+			remember: string;
+		};
 	};
+	toasts: {
+		clipboard: string;
+		eg: string;
+	};
+	notfound: {
+		uh: string;
+		pkg: string;
+		code: string;
+		home: string;
+	};
+	loading: {
+		loading: string;
+		msg: string;
+	};
+	error: {
+		uh: string;
+		msg: string;
+		issue: string;
+	};
+
 	glossary: {
 		or: string;
 		copy: string;
@@ -29,18 +57,45 @@ const en: lang = {
 		learn_more: 'Learn more',
 	},
 	header: {
-		placeholder: 'Search a package...',
+		placeholder: 'Press «Ctrl + K» to search a package...',
 	},
 	data: {
 		homepage: 'Homepage',
 		repo: 'Repository',
 		license: 'License',
-		crates: 'Add {{pkg}} to your project with Cargo command, or add it into Cargo.toml',
+		install: 'Install',
+		meta: 'Metadata',
+		readme: 'Readme',
+		crates: 'Add «{{pkg}}» to your project with Cargo command, or add it into Cargo.toml',
+		readmeToggle: {
+			show: 'Click for spread «readme»',
+			hide: 'Click for shrink «readme»',
+			remember: 'Keep «readme» always spread',
+		},
+	},
+	toasts: {
+		clipboard: 'Copied to clipboard',
+		eg: "What the...? That's weird. Anyway, enjoy it :)",
 	},
 	glossary: {
 		or: 'or',
 		copy: 'Copy',
 		copied: 'Copied',
+	},
+	loading: {
+		loading: 'Loading...',
+		msg: "This is taking too much time. Check if there isn't a Faraday cage over the router.",
+	},
+	error: {
+		uh: 'Uh...',
+		msg: 'Looks there was an error while searching the package. Open the console with «Ctrl + Shift + I» for details.',
+		issue: 'Open an issue at GitHub',
+	},
+	notfound: {
+		uh: 'Uh...',
+		pkg: "Looks that «{{pkg}}» doesn't exists. Possibly exists, but it's in Narnia.",
+		code: "Looks you're lost. Don't worry, look at the compass and go to the northwest.",
+		home: 'Return to home',
 	},
 };
 
@@ -52,18 +107,46 @@ const es: lang = {
 		learn_more: 'Saber más',
 	},
 	header: {
-		placeholder: 'Busca un paquete...',
+		placeholder: 'Pulsa «Ctrl + K» para buscar un paquete...',
 	},
 	data: {
 		homepage: 'Página de inicio',
 		repo: 'Repositorio',
 		license: 'Licencia',
-		crates: 'Importa {{pkg}} a tu proyecto con el comando Cargo, o añádelo en Cargo.toml',
+		install: 'Instalación',
+		meta: 'Metadatos',
+		readme: 'Readme',
+		crates: 'Importa «{{pkg}}» a tu proyecto con el comando Cargo, o añádelo en Cargo.toml',
+		readmeToggle: {
+			show: 'Pulsa para extender «readme»',
+			hide: 'Pulsa para contraer «readme»',
+			remember: 'Mantener «readme» siempre extendido',
+		},
+	},
+	toasts: {
+		clipboard: 'Copiado al portapapeles',
+		eg: '¿Pero qué...? Esto es raro. Da igual, disfrútalo :)',
 	},
 	glossary: {
 		or: 'o',
 		copy: 'Copiar',
 		copied: 'Copiado',
+	},
+	loading: {
+		loading: 'Loading...',
+		msg: "This is taking a while. Check if there isn't a Faraday cage over the router.",
+	},
+	error: {
+		uh: 'Vaya...',
+		msg: 'Parece que hubo un error mientras se buscaba el paquete. Abre la consola con «Ctrl + Shift + I» para más detalles.',
+		issue: 'Abrir un issue en GitHub',
+	},
+
+	notfound: {
+		uh: 'Vaya...',
+		pkg: "Looks that «{{pkg}}» doesn't exists.",
+		code: "Looks you're lost. ",
+		home: 'Volver a inicio',
 	},
 };
 
@@ -73,18 +156,3 @@ const dict = {
 };
 
 export default dict;
-
-let a = [
-	[
-		{ kind: 'github', url: 'https://github.com/tokio-rs/tokio' }, // del campo "repo"
-		{ kind: 'web', url: 'https://tokio.rs' }, // del campo "website"
-	],
-	[
-		{ kind: 'github', url: 'https://github.com/tokio-rs/console' }, // del campo "repo"
-		{ kind: 'github', url: 'https://github.com/tokio-rs/console/blob/main/tokio-console' }, // del campo "website"
-	],
-	[
-		{ kind: 'github', url: 'https://github.com/TritonDataCenter/tokio-zookeeper.git' }, // del campo "repo"
-		{ kind: 'github', url: 'https://github.com/TritonDataCenter/tokio-zookeeper' }, // del campo "website"
-	],
-];

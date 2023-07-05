@@ -14,10 +14,10 @@ In addition, I'm working on another project, so this could not have any update f
 
 ### App features
 
--   [x] Search (partial)
--   [x] Details (partial)
--   [x] Readme (partial)
--   [ ] Commands
+-   [x] Search
+-   [x] Details
+-   [x] Readme
+-   [x] Commands
 -   [ ] Sorting
 -   [ ] Filtering
 -   [ ] Dependencies links

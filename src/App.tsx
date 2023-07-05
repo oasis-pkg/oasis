@@ -1,9 +1,10 @@
-import { Navigate, Outlet, Route, Routes } from '@solidjs/router';
-import type { Component } from 'solid-js';
+import { Outlet, Route, Routes } from '@solidjs/router';
+import { Component, onCleanup, onMount } from 'solid-js';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import Header from './components/Header';
 import Package from './pages/Package';
+import Toast from './components/Toast';
 
 const Test1: Component<{}> = props => {
 	return <div>Test: /search</div>;
@@ -18,8 +19,34 @@ const Test3: Component<{}> = props => {
 };
 
 const Global: Component<{}> = props => {
+	const keyHandler = (e: KeyboardEvent) => {
+		const input = document.getElementById('header_input');
+
+		switch (e.key.toUpperCase()) {
+			case e.ctrlKey && 'K':
+			case e.ctrlKey && 'P':
+				// case 'S':
+				e.preventDefault();
+				input.focus({ preventScroll: true });
+
+				break;
+			case 'ESCAPE':
+				input.blur();
+				break;
+		}
+	};
+
+	onMount(() => {
+		document.addEventListener('keydown', keyHandler);
+	});
+
+	onCleanup(() => {
+		document.removeEventListener('keydown', keyHandler);
+	});
+
 	return (
-		<div class=''>
+		<div class='relative dark:bg-gray-950'>
+			<Toast />
 			<Header />
 			<Outlet />
 			{/* FIXME add footer */}
@@ -29,7 +56,7 @@ const Global: Component<{}> = props => {
 
 const App: Component = () => {
 	return (
-		<div class='w-full h-screen subpixel-antialiased text-gray-800'>
+		<div class='dark:bg-gray-950 w-full h-screen subpixel-antialiased text-gray-800 dark:text-gray-100 selection:bg-blue-200 dark:selection:bg-blue-800 relative'>
 			<Routes>
 				<Route path='/' component={Home} />
 				<Route path='*' component={Global}>

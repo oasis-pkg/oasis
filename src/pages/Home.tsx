@@ -29,12 +29,15 @@ const Home: Component<{}> = props => {
 		<div class='text-slate-900 relative font-heebo'>
 			<div class={`w-full h-screen flex flex-col items-center pt-24 pb-8 gap-y-24 ${store.get.gradient}`}>
 				<div class='flex flex-col gap-y-7 justify-center items-center p-4 text-slate-100'>
-					<div class='animate-spin-right'>
-						<IconFlat
-							onClick={() => store.set('gradient', getRandomGradient())}
-							class='fill-slate-100 w-24 h-24 animate-spin-left'
-						/>
+					<div class='epic'>
+						<div class='animate-spin-right'>
+							<IconFlat
+								onClick={() => store.set('gradient', getRandomGradient())}
+								class='fill-slate-100 w-24 h-24 animate-spin-left'
+							/>
+						</div>
 					</div>
+
 					<div class='flex flex-col justify-center items-center'>
 						<p class='font-semibold text-4xl'>{t('app')}</p>
 						<p class='font-medium text-2xl'>{t('slogan')}</p>
@@ -42,7 +45,7 @@ const Home: Component<{}> = props => {
 				</div>
 				<div class='flex justify-center w-full'>
 					<input
-						class='bg-slate-100 w-1/3 px-4 py-2 outline-none placeholder-slate-400'
+						class='bg-slate-100 rounded-l-md w-1/3 px-4 py-3 outline-none placeholder-slate-400'
 						placeholder={t('main.search')}
 						type='text'
 						onInput={e => store.set('query', e.target.value)}
@@ -52,7 +55,7 @@ const Home: Component<{}> = props => {
 							}
 						}}
 					/>
-					<div class='px-4 py-2 bg-slate-700 hover:cursor-pointer'>
+					<div class='flex items-center justify-center px-4 py-2 bg-slate-700 rounded-r-md hover:cursor-pointer'>
 						<Search class='fill-slate-100 w-6 h-6' />
 					</div>
 				</div>
