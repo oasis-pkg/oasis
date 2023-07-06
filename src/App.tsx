@@ -5,6 +5,7 @@ import Search from './pages/Search';
 import Header from './components/Header';
 import Package from './pages/Package';
 import Toast from './components/Toast';
+import NotFound from './components/NotFound';
 
 const Test1: Component<{}> = props => {
 	return <div>Test: /search</div>;
@@ -54,6 +55,14 @@ const Global: Component<{}> = props => {
 	);
 };
 
+const Notf: Component<{}> = props => {
+	return (
+		<div class='px-10 py-6 '>
+			<NotFound is404={true} />
+		</div>
+	);
+};
+
 const App: Component = () => {
 	return (
 		<div class='dark:bg-gray-950 w-full h-screen subpixel-antialiased text-gray-800 dark:text-gray-100 selection:bg-blue-200 dark:selection:bg-blue-800 relative'>
@@ -62,10 +71,7 @@ const App: Component = () => {
 				<Route path='*' component={Global}>
 					<Route path='/:platform/:pkg' component={Package} />
 					<Route path='/search' component={Search} />
-					{/* <Route path={['/pkg', '/package']}>
-						<Route path='/' element={<Navigate href='/' />} />
-					</Route> */}
-					<Route path='*' component={Test3} /> {/* FIXME add better 404 */}
+					<Route path='*' component={Notf} />
 				</Route>
 			</Routes>
 		</div>

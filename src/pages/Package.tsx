@@ -15,13 +15,16 @@ import egData from '../assets/eg.opus';
 import egp from '../utils/eg';
 import Loading from '../components/Loading';
 import Code from '../components/Code';
+import ErrorCmp from '../components/Error';
 
-const command = (platform: platform, pkg: string, ver: string): string[] => {
+const command = (platform: platform, pkg: pkg): string[] => {
 	let cmds = [];
 
 	switch (platform) {
 		case 'crates':
-			cmds.push(`cargo add ${pkg}`, `${pkg} = "${ver}"`);
+			cmds.push(`cargo add ${pkg.name}`, `${pkg.name} = "${pkg.version}"`);
+		case 'hexpm':
+			cmds.push(...pkg.hexpm.cmds);
 	}
 
 	return cmds;
@@ -42,7 +45,7 @@ const Package: Component<{}> = props => {
 	const [t] = useI18n<(typeof dict)['en-US']>();
 	const { platform, pkg } = useParams();
 	const [loaded, setLoaded] = createSignal(false);
-	const [error, setError] = createSignal<any>();
+	const [error, setError] = createSignal('');
 	const [extendedReadme, setExtendedReadme] = createSignal(store.get.CFG_extendedReadme);
 	const [data, setData] = createSignal({} as pkg); // Solid "createResource" doesn't work
 	const [cmd, setCmd] = createSignal([]);
@@ -62,8 +65,6 @@ const Package: Component<{}> = props => {
 		}
 	});
 
-	// FIXME Definitely I need to improve error handling
-	// Rust error handling is better
 	fetch(platform as platform, pkg).then(d => {
 		let [da, err] = d;
 
@@ -74,7 +75,9 @@ const Package: Component<{}> = props => {
 		setData(da);
 		setLoaded(true);
 
-		setCmd(command(data().platform, data().name, data().version));
+		console.log(data());
+
+		setCmd(command(data().platform, data()));
 
 		// This should be after loading signal to avoid loading hanging in case of error
 		if (urlparser(data().homepage) == urlparser(data().repo)) setData({ ...data(), homepage: '' });
@@ -83,7 +86,7 @@ const Package: Component<{}> = props => {
 
 	return (
 		<div class='p-8'>
-			<Switch fallback={<div>valla, esto no va: {`${error()}`}</div>}>
+			<Switch fallback={<ErrorCmp err={error} />}>
 				<Match when={!loaded()}>
 					<Loading />
 				</Match>
@@ -179,7 +182,7 @@ const Package: Component<{}> = props => {
 									prose-h6:font-heebo prose-h6:font-light
 									prose-code:text-slate-800
 
-									prose-img:m-4 prose-img:rounded-md
+									prose-img:mr-4 prose-img:rounded-md
 									prose-pre:bg-transparent prose-pre:rounded-md prose-pre:ring-1 prose-pre:ring-slate-300 prose-pre:select-text
 									
 									prose-h1:dark:text-slate-300 prose-h2:dark:text-slate-300 prose-h3:dark:text-slate-300 prose-h4:dark:text-slate-300 prose-h5:dark:text-slate-300 prose-h6:dark:text-slate-300
@@ -214,9 +217,4 @@ const Package: Component<{}> = props => {
 	);
 };
 
-/* 
-<div class='min-w-fit flex flex-col gap-8 px-8 py-6 rounded-md bg-gray-100 dark:bg-slate-800 shadow-md hover:shadow-lg ease-in-out duration-200'>
-
-</div>
-*/
 export default Package;

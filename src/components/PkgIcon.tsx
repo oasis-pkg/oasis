@@ -1,4 +1,4 @@
-import { SiRust } from 'solid-icons/si';
+import { SiElixir, SiErlang, SiRust } from 'solid-icons/si';
 import { Component, Match, Switch } from 'solid-js';
 import { platform } from '../types';
 
@@ -7,6 +7,9 @@ const PkgIcon: Component<{ onClick?: () => void; platform: platform; class: stri
 		<Switch>
 			<Match when={props.platform == 'crates'}>
 				<SiRust onclick={props.onClick} {...props} />
+			</Match>
+			<Match when={props.platform == 'hexpm'}>
+				<SiElixir onclick={props.onClick} {...props} />
 			</Match>
 		</Switch>
 	);

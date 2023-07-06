@@ -10,6 +10,7 @@ export default {
 		}, */
 		{
 			platform: 'crates',
+			prettyName: 'Crates',
 			bases: ['https://crates.io/api/v1', 'https://static.crates.io'],
 			endpoints: {
 				query: '/crates?page=1&per_page=50&q={{pkg}}',
@@ -17,5 +18,19 @@ export default {
 				readme: '/readmes/{{pkg}}/{{pkg}}-{{ver}}.html',
 			},
 		},
-	] as { platform: platform; bases: string[]; endpoints: { query: string; data: string; readme: string } }[],
+		{
+			platform: 'hexpm',
+			prettyName: 'Hex',
+			bases: ['https://hex.pm/api'],
+			endpoints: {
+				query: '/packages?sort=downloads&search={{pkg}}',
+				data: '/packages/{{pkg}}',
+			},
+		},
+	] as {
+		platform: platform;
+		prettyName: string;
+		bases: string[];
+		endpoints: { query: string; data: string; readme: string };
+	}[],
 };

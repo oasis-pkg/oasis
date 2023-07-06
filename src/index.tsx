@@ -7,6 +7,7 @@ import App from './App';
 import { I18nContext, createI18nContext } from '@solid-primitives/i18n';
 import { Component } from 'solid-js';
 import dict from './lang';
+import store from './store';
 
 const root = document.getElementById('root');
 
@@ -27,7 +28,7 @@ const I18nProvider: Component<{
 render(
 	() => (
 		// FIXME set persistent lang
-		<I18nProvider dict={dict} locale={'en-US'}>
+		<I18nProvider dict={dict} locale={store.get.lang}>
 			<Router>
 				<App />
 			</Router>

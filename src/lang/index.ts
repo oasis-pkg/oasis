@@ -1,4 +1,5 @@
 export type lang = {
+	lang: string;
 	app: string;
 	slogan: string;
 	main: {
@@ -8,6 +9,9 @@ export type lang = {
 	header: {
 		placeholder: string;
 	};
+	search: {
+		filter: string;
+	};
 	data: {
 		homepage: string;
 		repo: string;
@@ -16,6 +20,7 @@ export type lang = {
 		meta: string;
 		readme: string;
 		crates: string;
+		hexpm: string;
 		readmeToggle: {
 			show: string;
 			hide: string;
@@ -50,6 +55,7 @@ export type lang = {
 };
 
 const en: lang = {
+	lang: 'English',
 	app: 'Oasis',
 	slogan: 'All packages, one place.',
 	main: {
@@ -59,6 +65,9 @@ const en: lang = {
 	header: {
 		placeholder: 'Press «Ctrl + K» to search a package...',
 	},
+	search: {
+		filter: 'Filter',
+	},
 	data: {
 		homepage: 'Homepage',
 		repo: 'Repository',
@@ -66,7 +75,8 @@ const en: lang = {
 		install: 'Install',
 		meta: 'Metadata',
 		readme: 'Readme',
-		crates: 'Add «{{pkg}}» to your project with Cargo command, or add it into Cargo.toml',
+		crates: 'Add «{{pkg}}» to your project with «Cargo» command, or add it into «Cargo.toml»',
+		hexpm: 'Add «{{pkg}}» to your project into «mix.exs», «rebar.config» or «erlang.mk»',
 		readmeToggle: {
 			show: 'Click for spread «readme»',
 			hide: 'Click for shrink «readme»',
@@ -100,6 +110,7 @@ const en: lang = {
 };
 
 const es: lang = {
+	lang: 'Español',
 	app: 'Oasis',
 	slogan: 'Todos los paquetes, un solo lugar.',
 	main: {
@@ -109,6 +120,9 @@ const es: lang = {
 	header: {
 		placeholder: 'Pulsa «Ctrl + K» para buscar un paquete...',
 	},
+	search: {
+		filter: 'Filtrar',
+	},
 	data: {
 		homepage: 'Página de inicio',
 		repo: 'Repositorio',
@@ -116,7 +130,8 @@ const es: lang = {
 		install: 'Instalación',
 		meta: 'Metadatos',
 		readme: 'Readme',
-		crates: 'Importa «{{pkg}}» a tu proyecto con el comando Cargo, o añádelo en Cargo.toml',
+		crates: 'Añade «{{pkg}}» a tu proyecto con el comando «Cargo», o añádelo en «Cargo.toml»',
+		hexpm: 'Añade «{{pkg}}» a tu proyecto en «mix.exs», «rebar.config» o «erlang.mk»',
 		readmeToggle: {
 			show: 'Pulsa para extender «readme»',
 			hide: 'Pulsa para contraer «readme»',
@@ -144,8 +159,8 @@ const es: lang = {
 
 	notfound: {
 		uh: 'Vaya...',
-		pkg: "Looks that «{{pkg}}» doesn't exists.",
-		code: "Looks you're lost. ",
+		pkg: 'Parece que «{{pkg}}» no existe. Quizás exista, pero esté en Narnia.',
+		code: 'Parece que te has perdido. No te preocupes, mira la brújula y dirígete al noroeste.',
 		home: 'Volver a inicio',
 	},
 };

@@ -1,4 +1,4 @@
-import { Component, Show, createSignal } from 'solid-js';
+import { Component, For, Show, createEffect, createSignal, onMount } from 'solid-js';
 import store from '../store';
 import Icon from '../assets/Icon';
 import { useI18n } from '@solid-primitives/i18n';
@@ -13,7 +13,10 @@ import Sun from '../assets/Sun';
 import Moon from '../assets/Moon';
 
 const Header: Component = () => {
-	const [t] = useI18n<(typeof dict)['en-US']>();
+	const [t, { locale }] = useI18n<(typeof dict)['en-US']>();
+
+	const [setLang, setSetLang] = createSignal(false);
+
 	let navigate = useNavigate();
 
 	return (
@@ -61,7 +64,26 @@ const Header: Component = () => {
 					<a href={config.repo} target='_blank'>
 						<SiGithub class='w-7 h-7 cursor-pointer fill-slate-700 dark:fill-slate-300' />
 					</a>
-					<Settings class='w-8 h-8 cursor-pointer fill-slate-700 dark:fill-slate-300 hover:rotate-180 active:rotate-0 ease-[cubic-bezier(.24,1.61,.27,.84)] duration-[1.5s]' />
+					<Settings
+						onclick={() => setSetLang(p => !p)}
+						class='w-8 h-8 cursor-pointer fill-slate-700 dark:fill-slate-300 hover:rotate-180 active:rotate-0 ease-[cubic-bezier(.24,1.61,.27,.84)] duration-[1.5s]'
+					/>
+					<div
+						class={`bg-slate-100 dark:bg-slate-600 fixed top-24 right-4 z-50 ${
+							!setLang() && 'opacity-0 h-0 top-16'
+						} flex flex-col gap-4 px-4 py-3 justify-center items-center overflow-hidden rounded-md shadow-md hover:shadow-lg transition-all`}>
+						<For each={Object.entries(dict).map(([code, lang]) => ({ code: code, name: lang.lang }))}>
+							{i => (
+								<div
+									onClick={() => locale(i.code)}
+									class={`flex px-4 py-2 gap-2 select-none items-center ring-1 ring-slate-200 dark:ring-slate-700 rounded-md ${
+										i.code == locale() && 'bg-slate-200 dark:bg-slate-700'
+									} ease-in-out duration-200`}>
+									<p class='font-heebo'>{i.name}</p>
+								</div>
+							)}
+						</For>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -8,14 +8,18 @@ const Toast: Component<{}> = props => {
 	const close = () => store.set('toast', { text: '', type: '' });
 
 	onMount(() => {
-		setInterval(() => close(), 5000);
+		setTimeout(async () => {
+			store.set('toast', { ...store.get.toast, type: '' });
+			await new Promise(r => setTimeout(r, 500));
+			close();
+		}, 10000);
 	});
 
 	return (
 		<div
 			class={`bg-slate-100 dark:bg-slate-600 fixed top-24 right-4 z-50 h-10 ${
-				store.get.toast.type !== '' ? 'flex gap-4 justify-center items-center' : 'hidden transition-all'
-			} overflow-hidden rounded-md shadow-md hover:shadow-lg ease-in-out duration-200 transition-all transform`}>
+				!store.get.toast.type && 'opacity-0 h-0 top-14'
+			} flex gap-4 justify-center items-center overflow-hidden rounded-md shadow-md hover:shadow-lg transition-all`}>
 			<div onclick={close} class={`${store.get.gradient} p-2`}>
 				<Switch fallback={<Ok class='fill-slate-100 w-8 h-8' />}>
 					<Match when={store.get.toast.type == 'sound'}>

@@ -1,4 +1,4 @@
-export type platform = 'arch' | 'aur' | 'crates';
+export type platform = 'arch' | 'aur' | 'crates' | 'hexpm';
 export type urltype = 'any' | 'github' | 'gitlab';
 export type url = { kind: urltype; url: string };
 
@@ -16,6 +16,9 @@ export type pkg = {
 	arch?: {
 		arch: string;
 		repo: string;
+	};
+	hexpm?: {
+		cmds: string[];
 	};
 };
 

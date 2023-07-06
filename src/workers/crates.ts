@@ -52,38 +52,3 @@ export default {
 		}
 	},
 } as worker;
-
-/* 
-	data: async q => {
-		let uri = config.endpoints.filter(e => e.platform == 'crates')[0];
-
-		let { data } = await axios.get(uri.bases[0] + uri.endpoints.data.replaceAll('{{pkg}}', q)).catch(() => null);
-
-		let readme = await axios.get(
-			uri.bases[1] +
-				uri.endpoints.readme.replaceAll('{{pkg}}', q).replaceAll('{{ver}}', data.crate.newest_version)
-		);
-
-		let value: pkg = {
-			platform: 'crates',
-			name: data.crate.name,
-			description: data.crate.description,
-			homepage: data.crate.homepage,
-			repo: data.crate.repository,
-			licenses: [data.versions[0].license],
-
-			version: data.crate.newest_version,
-		};
-
-		if (readme.data) {
-			value.readme = `${readme.data}`; // zzz
-		}
-
-		console.log(value);
-
-		return value;
-	},
-	data: async q => {
-		return {};
-	},
-} as worker; */
