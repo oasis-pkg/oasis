@@ -19,7 +19,7 @@ In addition, I'm working on another project, so this could not have any update f
 -   [x] Readme
 -   [x] Commands
 -   [ ] Sorting
--   [ ] Filtering
+-   [x] Filtering
 -   [ ] Dependencies links
 -   [ ] License overview
 
