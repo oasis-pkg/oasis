@@ -39,7 +39,7 @@ In addition, I'm working on another project, so this could not have any update f
 -   [x] Cargo crates
 -   [ ] NPM modules
 -   [ ] Deno modules
--   [ ] Hex.pm packages
+-   [x] Hex.pm packages
 -   [ ] PyPI packages
 -   [ ] More things...
 
